@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { addEmployee } from "../redux/employeeSlice";
+import Select from "./Select";
+import { Link } from "react-router-dom";
 
 const states = [
   { name: "Alabama", abbreviation: "AL" },
@@ -56,32 +60,67 @@ const states = [
 ];
 
 const EmployeeForm = () => {
+  const dispatch = useDispatch();
+
+  // ref des champs du formulaire
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const dateOfBirthRef = useRef();
+  const startDateRef = useRef();
+  const streetRef = useRef();
+  const cityRef = useRef();
+  const stateRef = useRef();
+  const zipCodeRef = useRef();
+  const departmentRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Création de l'objet employé 
+    const newEmployee = {
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      dateOfBirth: dateOfBirthRef.current.value,
+      startDate: startDateRef.current.value,
+      street: streetRef.current.value,
+      city: cityRef.current.value,
+      state: stateRef.current.value,
+      zipCode: zipCodeRef.current.value,
+      department: departmentRef.current.value,
+    };
+
+    dispatch(addEmployee(newEmployee));
+
+    // Réinitialisation auto du formulaire
+    e.target.reset();
+  };
+
   return (
     <div className="container">
       <h2>Create Employee</h2>
-      <form id="create-employee">
-        <label htmlFor="first-name">First Name</label>
-        <input type="text" id="first-name" />
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="firstName">First Name</label>
+        <input type="text" id="firstName" ref={firstNameRef} />
 
-        <label htmlFor="last-name">Last Name</label>
-        <input type="text" id="last-name" />
+        <label htmlFor="lastName">Last Name</label>
+        <input type="text" id="lastName" ref={lastNameRef} />
 
-        <label htmlFor="date-of-birth">Date of Birth</label>
-        <input id="date-of-birth" type="text" />
+        <label htmlFor="dateOfBirth">Date of Birth</label>
+        <input type="date" id="dateOfBirth" ref={dateOfBirthRef} />
 
-        <label htmlFor="start-date">Start Date</label>
-        <input id="start-date" type="text" />
+        <label htmlFor="startDate">Start Date</label>
+        <input type="date" id="startDate" ref={startDateRef} />
 
         <fieldset className="address">
           <legend>Address</legend>
           <label htmlFor="street">Street</label>
-          <input id="street" type="text" />
+          <input type="text" id="street" ref={streetRef} />
 
           <label htmlFor="city">City</label>
-          <input id="city" type="text" />
+          <input type="text" id="city" ref={cityRef} />
 
           <label htmlFor="state">State</label>
-          <select id="state">
+          <select id="state" ref={stateRef}>
             {states.map((state) => (
               <option key={state.abbreviation} value={state.abbreviation}>
                 {state.name}
@@ -89,21 +128,21 @@ const EmployeeForm = () => {
             ))}
           </select>
 
-          <label htmlFor="zip-code">Zip Code</label>
-          <input id="zip-code" type="number" />
+          <label htmlFor="zipCode">Zip Code</label>
+          <input type="number" id="zipCode" ref={zipCodeRef} />
         </fieldset>
 
+        {/* Component Selecteur */}
         <label htmlFor="department">Department</label>
-        <select id="department">
-          <option>Sales</option>
-          <option>Marketing</option>
-          <option>Engineering</option>
-          <option>Human Resources</option>
-          <option>Legal</option>
-        </select>
+        <Select ref={departmentRef} /> 
 
         <button type="submit">Save</button>
       </form>
+
+      {/* Lien vers la page EmployeeList */}
+        <Link to="/employees">View Employee List</Link>
+
+
     </div>
   );
 };
