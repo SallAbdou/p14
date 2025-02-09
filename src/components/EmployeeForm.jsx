@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../redux/employeeSlice";
 import Select from "./Select";
@@ -59,34 +59,39 @@ const states = [
   { name: "Wyoming", abbreviation: "WY" },
 ];
 
+const departments = [
+  'Sales',
+  'Marketing',
+  'Engineering',
+  'Human Resources',
+  'Legal',
+]
+
+
+
 const EmployeeForm = () => {
   const dispatch = useDispatch();
+  const [department, setDepartment] = useState('Sales')
+  const [state, setState] = useState('AL')
 
-  // ref des champs du formulaire
-  const firstNameRef = useRef();
-  const lastNameRef = useRef();
-  const dateOfBirthRef = useRef();
-  const startDateRef = useRef();
-  const streetRef = useRef();
-  const cityRef = useRef();
-  const stateRef = useRef();
-  const zipCodeRef = useRef();
-  const departmentRef = useRef();
+  const form = useRef()
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+
+
     // Création de l'objet employé 
     const newEmployee = {
-      firstName: firstNameRef.current.value,
-      lastName: lastNameRef.current.value,
-      dateOfBirth: dateOfBirthRef.current.value,
-      startDate: startDateRef.current.value,
-      street: streetRef.current.value,
-      city: cityRef.current.value,
-      state: stateRef.current.value,
-      zipCode: zipCodeRef.current.value,
-      department: departmentRef.current.value,
+      firstName: form.current[0].value,
+      lastName: form.current[1].value,
+      dateOfBirth: form.current[2].value,
+      startDate: form.current[3].value,
+      street: form.current[4].value,
+      city: form.current[5].value,
+      state: state,
+      zipCode: form.current[7].value,
+      department: department
     };
 
     dispatch(addEmployee(newEmployee));
@@ -98,49 +103,43 @@ const EmployeeForm = () => {
   return (
     <div className="container">
       <h2>Create Employee</h2>
-      <form onSubmit={handleSubmit}>
+      <form ref={form} onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name</label>
-        <input type="text" id="firstName" ref={firstNameRef} />
+        <input type="text" id="firstName" />
 
         <label htmlFor="lastName">Last Name</label>
-        <input type="text" id="lastName" ref={lastNameRef} />
+        <input type="text" id="lastName" />
 
         <label htmlFor="dateOfBirth">Date of Birth</label>
-        <input type="date" id="dateOfBirth" ref={dateOfBirthRef} />
+        <input type="date" id="dateOfBirth" />
 
         <label htmlFor="startDate">Start Date</label>
-        <input type="date" id="startDate" ref={startDateRef} />
+        <input type="date" id="startDate" />
 
         <fieldset className="address">
           <legend>Address</legend>
           <label htmlFor="street">Street</label>
-          <input type="text" id="street" ref={streetRef} />
+          <input type="text" id="street" />
 
           <label htmlFor="city">City</label>
-          <input type="text" id="city" ref={cityRef} />
+          <input type="text" id="city" />
 
           <label htmlFor="state">State</label>
-          <select id="state" ref={stateRef}>
-            {states.map((state) => (
-              <option key={state.abbreviation} value={state.abbreviation}>
-                {state.name}
-              </option>
-            ))}
-          </select>
+          <Select onChange={(value) => setState(value)} data={states} option={{ name: 'name', value: 'abbreviation' }} />
 
           <label htmlFor="zipCode">Zip Code</label>
-          <input type="number" id="zipCode" ref={zipCodeRef} />
+          <input type="number" id="zipCode" />
         </fieldset>
 
         {/* Component Selecteur */}
         <label htmlFor="department">Department</label>
-        <Select ref={departmentRef} /> 
+        <Select onChange={(value) => setDepartment(value)} data={departments} />
 
         <button type="submit">Save</button>
       </form>
 
       {/* Lien vers la page EmployeeList */}
-        <Link to="/employees">View Employee List</Link>
+      <Link to="/employees">View Employee List</Link>
 
 
     </div>
