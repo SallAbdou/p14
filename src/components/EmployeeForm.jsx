@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { addEmployee } from "../redux/employeeSlice";
 import Select from "./Select";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker"; //nouveau date picker
+import "react-datepicker/dist/react-datepicker.css";
+
 
 const states = [
   { name: "Alabama", abbreviation: "AL" },
@@ -73,6 +76,8 @@ const EmployeeForm = () => {
   const dispatch = useDispatch();
   const [department, setDepartment] = useState('Sales')
   const [state, setState] = useState('AL')
+  const [dateOfBirth, setDateOfBirth] = useState(null);
+  const [startDate, setStartDate] = useState(null);
 
   const form = useRef()
 
@@ -111,10 +116,26 @@ const EmployeeForm = () => {
         <input type="text" id="lastName" />
 
         <label htmlFor="dateOfBirth">Date of Birth</label>
-        <input type="date" id="dateOfBirth" />
+        <DatePicker
+          selected={dateOfBirth}
+          onChange={(date) => setDateOfBirth(date)}
+          dateFormat="yyyy-MM-dd"
+          placeholderText="Date of Birth"
+          showYearDropdown
+          scrollableYearDropdown
+          yearDropdownItemNumber={100}
+        />
 
         <label htmlFor="startDate">Start Date</label>
-        <input type="date" id="startDate" />
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          dateFormat="yyyy-MM-dd"
+          placeholderText="Start Date"
+          showYearDropdown
+          scrollableYearDropdown
+          yearDropdownItemNumber={100}
+        />
 
         <fieldset className="address">
           <legend>Address</legend>
