@@ -5,6 +5,7 @@ import Select from "./Select";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker"; //nouveau date picker
 import "react-datepicker/dist/react-datepicker.css";
+import Modal from "./Modal";
 
 
 const states = [
@@ -71,20 +72,18 @@ const departments = [
 ]
 
 
-
 const EmployeeForm = () => {
   const dispatch = useDispatch();
-  const [department, setDepartment] = useState('Sales')
-  const [state, setState] = useState('AL')
+  const [department, setDepartment] = useState('Sales');
+  const [state, setState] = useState('AL');
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [startDate, setStartDate] = useState(null);
+  const [showModal, setShowModal] = useState(false); // État pour la modale
 
-  const form = useRef()
+  const form = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-
 
     // Création de l'objet employé 
     const newEmployee = {
@@ -100,6 +99,9 @@ const EmployeeForm = () => {
     };
 
     dispatch(addEmployee(newEmployee));
+
+    // Ouvre la modale à la soumission
+    setShowModal(true);
 
     // Réinitialisation auto du formulaire
     e.target.reset();
@@ -152,7 +154,6 @@ const EmployeeForm = () => {
           <input type="number" id="zipCode" />
         </fieldset>
 
-        {/* Component Selecteur */}
         <label htmlFor="department">Department</label>
         <Select onChange={(value) => setDepartment(value)} data={departments} />
 
@@ -162,7 +163,10 @@ const EmployeeForm = () => {
       {/* Lien vers la page EmployeeList */}
       <Link to="/employees">View Employee List</Link>
 
-
+      {/* composant Modal */}
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <p>Employee created successfully!</p>
+      </Modal>
     </div>
   );
 };
