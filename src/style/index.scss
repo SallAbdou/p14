@@ -1,4 +1,9 @@
 @import './modal.scss';
+
+body {
+    background: linear-gradient(to bottom, white 0%, #E8F5E9 45%, #A5D6A7 80%, #4CAF50 100%);
+}
+
 .title {
     display: flex;
     align-items: center;
@@ -6,19 +11,41 @@
 }
 
 
+ h1 {
+    display: flex ;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+
+ }
+ 
+ h2 {
+    font-family: 'Cinzel', serif;
+ }
+
+form {
+    background-color: #05ac05;
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+
+    label {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 10px;
+    }
+
+    input {
+        border-radius: 20px;
+    }
+
+    .address {
+        margin-top: 10px;
+    }
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-label {
-    display: block;
-    margin-top: 1rem;
-    margin-bottom: 10px;
-}
-
-.address {
-    margin-top: 10px;
 }

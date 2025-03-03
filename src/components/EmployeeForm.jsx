@@ -108,7 +108,13 @@ const EmployeeForm = () => {
   };
 
   return (
+    
     <div className="container">
+  
+    <a href="#">
+      <img alt="logo" src="/img/logo.png" />
+    </a>
+
       <h2>Create Employee</h2>
       <form ref={form} onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name</label>

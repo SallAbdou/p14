@@ -23,7 +23,7 @@ const modalStyle = {
 const buttonStyle = {
   marginTop: "10px",
   padding: "8px 16px",
-  backgroundColor: "#cdcd",
+  backgroundColor: "#cdcdcd",
   color: "white",
   border: "none",
   borderRadius: "4px",
