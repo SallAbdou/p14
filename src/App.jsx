@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EmployeeForm from './components/EmployeeForm';
 import EmployeeList from './components/EmployeeList';
-import Modal from './components/Modal';
 
 function App() {
   return (
@@ -11,8 +10,6 @@ function App() {
         <Routes>
           <Route path="/" element={<EmployeeForm />} />
           <Route path="/employees" element={<EmployeeList />} />
-          <Route path="/modal" element={<Modal />} />
-
         </Routes>
       </div>
     </Router>
