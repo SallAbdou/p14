@@ -5,7 +5,7 @@ import Select from "./Select";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker"; //nouveau date picker
 import "react-datepicker/dist/react-datepicker.css";
-import Modal from "./Modal";
+import Modal from 'sallabdou-modal-react'
 
 
 const states = [
