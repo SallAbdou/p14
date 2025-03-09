@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../redux/employeeSlice";
 import Select from "./Select";
@@ -112,7 +112,7 @@ const EmployeeForm = () => {
     <div className="container">
   
     <a href="#">
-      <img alt="logo" src="/img/logo.png" />
+      <img alt="logo" src="/img/logo.webp" />
     </a>
 
       <h2>Create Employee</h2>
@@ -154,14 +154,14 @@ const EmployeeForm = () => {
           <input type="text" id="city" />
 
           <label htmlFor="state">State</label>
-          <Select onChange={(value) => setState(value)} data={states} option={{ name: 'name', value: 'abbreviation' }} />
+          <Select id="state" onChange={(value) => setState(value)} data={states} option={{ name: 'name', value: 'abbreviation' }} />
 
           <label htmlFor="zipCode">Zip Code</label>
           <input type="number" id="zipCode" />
         </fieldset>
 
         <label htmlFor="department">Department</label>
-        <Select onChange={(value) => setDepartment(value)} data={departments} />
+        <Select id="department" onChange={(value) => setDepartment(value)} data={departments} />
 
         <button type="submit">Save</button>
       </form>

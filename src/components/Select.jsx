@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const Select = ({ onChange, data, option }) => {
+const Select = ({ id,onChange, data, option }) => {
 
   const [value, setValue] = useState('')
   const handleOnChange = (e) => {
@@ -11,7 +11,7 @@ const Select = ({ onChange, data, option }) => {
 
 
   return (
-    <select value={value} onChange={handleOnChange}>
+    <select id={id} value={value} onChange={handleOnChange}>
       {data.sort().map((item, index) => (
         <option
           key={`${option ? item[option.value] : item}-${index}`}
