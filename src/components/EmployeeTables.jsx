@@ -28,7 +28,7 @@ const EmployeeTable = () => {
 
   return (
     <div>
-      <h2>Employee List</h2>
+      <h2 className="tables-title">Current Employees</h2>
 
       {/* Barre de recherche */}
       <input

@@ -115,6 +115,7 @@ const EmployeeForm = () => {
       <img alt="logo" src="/img/logo.webp" />
     </a>
 
+    <h1>HRnet</h1>
       <h2>Create Employee</h2>
       <form ref={form} onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name</label>

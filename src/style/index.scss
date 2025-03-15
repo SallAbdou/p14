@@ -18,10 +18,15 @@ body {
     font-family: 'Cinzel', serif;
 
  }
- 
- h2 {
-    font-family: 'Cinzel', serif;
+
+ h2{
+    font-family: 'Cinzel', serif; 
  }
+ 
+.tables-title {
+    display: flex ;
+    justify-content: center;
+    font-family: 'Cinzel', serif; }
 
 form {
     background-color: #055705;
@@ -54,7 +59,7 @@ form {
 .search-input{
     padding: 10px;
     margin-bottom: 10px;
-    margin-left: 5px;
+    margin-left: 80%;
     border-radius: 15px;
     max-width: 200px;
     width: 100%;
