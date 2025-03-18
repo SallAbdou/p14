@@ -1,8 +1,14 @@
-# React + Vite
+# HRNET
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue sur HRNET, l'application interne de l'entreprise pour voir la liste des employées,
+ ou en ajouter de nouveaux.
+ 
+ Ce projet a été réalisé en utilisant React + Vite.js
 
-Currently, two official plugins are available:
+# Package modal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ Ce projet utilise le package sallabdou-modal-react pour gérer l'affichage des modales. Vous pouvez consulter la documentation du package sur npm pour en savoir plus sur son utilisation :
+ https://www.npmjs.com/package/sallabdou-modal-react?activeTab=readme
+
+Lien du repo:
+https://github.com/SallAbdou/sallabdou-modal-react

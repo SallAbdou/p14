@@ -18,7 +18,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.3",
     "redux": "^5.0.1",
-    "sallabdou-modal-react": "^0.1.6",
+    "sallabdou-modal-react": "^0.1.7",
     "sass": "^1.83.4"
   },
   "devDependencies": {
