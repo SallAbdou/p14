@@ -112,7 +112,7 @@ const EmployeeForm = () => {
     <div className="container">
   
     <a href="#">
-      <img alt="logo" src="/img/logo.webp" />
+      <img alt="logo" className="logo" src="/img/logo.webp" />
     </a>
 
     <h1>HRnet</h1>
